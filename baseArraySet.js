@@ -2,7 +2,6 @@ let Set = (function IIFE() {
   let items = new WeakMap()
   class Set {
     constructor() {
-      
       items.set(this, [])
     }
     has(v) {
@@ -39,12 +38,6 @@ let Set = (function IIFE() {
       let arr = items.get(this)
       console.log(arr)
     }
-    toString() {
-      // console.log("111")
-    }
-    [Symbol.toPrimitive]() {
-      console.log("111")
-    }
   }
   return Set
 })()
@@ -59,7 +52,14 @@ set.add(null)
 set.add(NaN)
 let o = {}
 set.add(o)
-set.clear()
-set.add(new Set())
-console.log(set); 
-set.print()
+// set.clear()
+// set.add(new Set())
+// console.log(set)
+console.log(Math[Symbol.toStringTag])
+// console.log(String(set))
+// set.print()
+
+// let c = {}
+// console.log(typeof c.valueOf())
+// let s = new Set ([1,2,3, {},undefined,null])
+// s.forEach((e, i ,set )=> console.log(e, i ,set))

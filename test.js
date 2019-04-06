@@ -6,3 +6,5 @@ arr.forEach((e, index, arr) => {
   }
 })
 console.log(arr)
+console.log(arr)
+
