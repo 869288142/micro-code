@@ -7,6 +7,17 @@ function getRepeatStringCount(str) {
   return map
 }
 
-let str = '123321111'
+function getMaxCountChar(str) {
+  let strCountMap = getRepeatStringCount(str)
+  console.log(strCountMap)
+  let curChar = ""
+  let curCount = 0
+  strCountMap.forEach((v, k) => {
+    v > curCount && (curChar = k, curCount = v)
+  })
+  return curChar
+}
 
-console.log(getRepeatStringCount(str))
+let str = "1111232323"
+
+console.log(getMaxCountChar(str))
