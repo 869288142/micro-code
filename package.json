@@ -1,0 +1,45 @@
+{
+  "name": "micro-code",
+  "version": "1.0.0",
+  "description": "记录一些常见的polyfill\r map 原生实现",
+  "main": "./lib/main.js",
+  "module": "./lib/es/main.js",
+  "scripts": {
+    "test": "jest --bail ",
+    "dev": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/869288142/micro-code.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/869288142/micro-code/issues"
+  },
+  "homepage": "https://github.com/869288142/micro-code#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/runtime": "^7.11.2",
+    "@rollup/plugin-babel": "^5.1.0",
+    "@rollup/plugin-typescript": "^5.0.2",
+    "@types/jest": "^26.0.9",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "jest": "^26.3.0",
+    "rollup": "^2.23.1",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "ts-jest": "^26.1.4",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs2": "^7.11.2"
+  }
+}
