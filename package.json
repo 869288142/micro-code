@@ -21,9 +21,11 @@
   "homepage": "https://github.com/869288142/micro-code#readme",
   "devDependencies": {
     "@babel/core": "^7.11.1",
+    "@babel/parser": "^7.11.3",
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/runtime": "^7.11.2",
+    "@babel/types": "^7.11.0",
     "@rollup/plugin-babel": "^5.1.0",
     "@rollup/plugin-typescript": "^5.0.2",
     "@types/jest": "^26.0.9",
@@ -37,6 +39,7 @@
     "rollup-plugin-typescript2": "^0.27.2",
     "ts-jest": "^26.1.4",
     "tslib": "^2.0.0",
+    "typedoc": "^0.18.0",
     "typescript": "^3.9.7"
   },
   "dependencies": {
