@@ -4,7 +4,7 @@
       "importHelpers": true,
       "sourceMap": true,
       "esModuleInterop":true,
-      "declaration": true,  
+      // "declaration": true,  
       "moduleResolution":"node",
       "lib": [
         "esnext",

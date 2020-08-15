@@ -1,2 +1,2 @@
-import { a } from './a.ts'
-console.log(a)
+import { a } from './a.ts';
+console.log(a);

@@ -10,11 +10,11 @@
     - [x] scope Hosting
     - [x] tree Shaking
 
-- [ ] 代码风格
+- [x] 代码风格
     - [x] eslint
-    - [ ] prettier
+    - [x] prettier
 
-- [ ] 代码压缩
+- [x] 代码压缩
 
 - [x] 单元测试
 
@@ -23,3 +23,4 @@
 https://juejin.im/post/6844903837921181704#heading-2
 
 https://juejin.im/post/6856410900577026061#heading-32
+

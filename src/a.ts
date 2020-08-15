@@ -1,9 +1,9 @@
-export let a = 1
+export const a = 1;
 
 interface A {
-    c: number
+    c: number;
 }
 
-let Obj :A   = {
-    c:3
-}
+const Obj: A = {
+    c: 3,
+};
