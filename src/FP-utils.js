@@ -6,22 +6,22 @@
 // 实现思路
 // 利用闭包来决定继续传参还是立即调用
 function curry(fn, count = fn.length) {
-  return (function nextCurried(prevArgs) {
-    return function curried(nextArg) {
-      let args = [...prevArgs, nextArg]
-      return args.length >= count ? fn(...args) : nextCurried(args)
-    }
-  })([])
+    return (function nextCurried(prevArgs) {
+        return function curried(nextArg) {
+            let args = [...prevArgs, nextArg];
+            return args.length >= count ? fn(...args) : nextCurried(args);
+        };
+    })([]);
 }
 
 // 松散柯理化
-function curry(fn, arity = fn.length){
-  return (function nextCurried(preArgs){
-    return function curried(...nextArg) {
-      let args = [...preArgs, ...nextArg]
-      return args.length >= arity ? fn(...args): nextCurried(args)
-    }
-  })([])
+function curry(fn, arity = fn.length) {
+    return (function nextCurried(preArgs) {
+        return function curried(...nextArg) {
+            let args = [...preArgs, ...nextArg];
+            return args.length >= arity ? fn(...args) : nextCurried(args);
+        };
+    })([]);
 }
 
 // 偏函数 固定参数
@@ -32,13 +32,7 @@ function curry(fn, arity = fn.length){
 //   };
 // }
 
-function partial(fn, ...presetArgs) {
-  return function partialLyApplied(...laterArgs){
-    return fn(...presetArgs, ...laterArgs)
-  }
-}
+let sum = (a, b) => a + b;
 
-let sum = (a, b) => a + b
-
-let sum2 = partial(sum, 2)
-console.log(sum2(2))
+let sum2 = partial(sum, 2);
+console.log(sum2(2));

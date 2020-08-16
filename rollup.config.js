@@ -4,7 +4,7 @@ import { eslint } from 'rollup-plugin-eslint';
 import { terser } from 'rollup-plugin-terser';
 
 export default {
-    input: 'src/main.js',
+    input: 'src/main.ts',
     output: [
         {
             file: '/es/main.js',

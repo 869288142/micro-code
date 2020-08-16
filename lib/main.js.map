@@ -1,1 +1,1 @@
-{"version":3,"file":"main.js","sources":["../src/main.js","../src/a.ts"],"sourcesContent":["import { a } from './a.ts';\r\nconsole.log(a);\r\n","export const a = 1;\r\n\r\ninterface A {\r\n    c: number;\r\n}\r\n\r\nconst Obj: A = {\r\n    c: 3,\r\n};\r\n"],"names":["console","log"],"mappings":"2FACAA,QAAQC,ICDS"}
+{"version":3,"file":"main.js","sources":[],"sourcesContent":[],"names":[],"mappings":""}
