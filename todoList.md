@@ -31,10 +31,4 @@ https://zhuanlan.zhihu.com/p/120441348
 
 
 
-// 泛型
-// 类型映射
-// 类型收缩
-
-Advanced Types
-Utility Types
-Decorators
+编写一些复杂类型

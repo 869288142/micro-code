@@ -1,1 +1,0 @@
-{"version":3,"file":"main.js","sources":["../src/main.ts"],"sourcesContent":["var a = 1\r\nconsole.log(\"a\",a);"],"names":["console","log"],"mappings":"2FACAA,QAAQC,IAAI,IADJ"}
