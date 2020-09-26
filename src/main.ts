@@ -1,4 +1,4 @@
-import { memoize } from 'lodash/fp';
+import { memoize } from 'lodash/fp'
 // export function partial<T extends (...args: any[]) => any>(
 //     fn: T,
 //     ...presetArgs: any[]
@@ -8,7 +8,7 @@ import { memoize } from 'lodash/fp';
 //     };
 // }
 
-// const sum = (a: number, b: number) => a + b;
+const sum = (a: number, b: number, c: number[]) => a + b
 
-// const sum2 = partial(sum);
-// console.log(sum2());
+const sum2 = memoize(sum)
+console.log(sum2(1, 2, []))

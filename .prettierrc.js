@@ -1,7 +1,9 @@
 module.exports =
 {
-  "semi": true,
+  "semi": false,
   "singleQuote": true,
-  "tabWidth": 4,
-  "endOfLine": "auto"
+  "tabWidth": 2,
+  "endOfLine": "lf",
+  "printWidth": 120,
+  parser: 'typescript'
 }

@@ -4,7 +4,6 @@ module.exports = {
     // 指定脚本的运行环境。每种环境都有一组特定的预定义全局变量
     env: {
         browser: true,  // 浏览器环境中的全局变量
-        jquery: true,   //  jQuery 全局变量
 		'es2020': true,  // 启用除了 modules 以外的所有 ECMAScript 6 特性
         commonjs: true, // CommonJS 全局变量和 CommonJS 作用域 (用于 Browserify/WebPack 打包的只在浏览器中运行的代码)
 	},
@@ -15,14 +14,13 @@ module.exports = {
     },
     // 指出你要使用的全局变量。将变量设置为 true 将允许变量被重写，或 false 将不允许被重写
     globals: {
-        Fai: true,
-        Site: true,
-        jzUtils: true
     },
     extends: [
-		'eslint:recommended',
-		'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended'
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:jest/recommended',
+        'prettier',
+        'prettier/@typescript-eslint',
     ],
     rules: {
         /**
@@ -49,31 +47,6 @@ module.exports = {
         // https://eslint.org/docs/rules/func-call-spacing
         'func-call-spacing': ['error', 'never'],
 
-        // 使用 tab 缩进,使用空格缩进，而且将tab格式化为4个空格
-        // https://eslint.org/docs/rules/indent
-        // indent: ['error', 'tab', {
-        //     SwitchCase: 1,  // 强制 switch 语句中的 case 子句的缩进级别
-        //     VariableDeclarator: 1,  // 强制 var 声明的缩进级别
-        //     outerIIFEBody: 1,   // 强制文件级别的 IIFE 的缩进
-        //     MemberExpression: 1,    // 强制多行属性链的缩进
-        //     FunctionDeclaration: {
-        //         parameters: 1,  // 强制函数声明中参数的缩进
-        //         body: 1,    // 强制函数声明的函数体的缩进级别
-        //     },
-        //     FunctionExpression: {
-        //         parameters: 1,  // 强制函数声明中参数的缩进
-        //         body: 1,    // 强制函数声明的函数体的缩进级别
-        //     },
-        //     CallExpression: {
-        //         arguments: 1,   // 强制函数调用表达式中参数的缩进
-        //     },
-        //     ArrayExpression: 1, // 强制数组中的元素的缩进
-        //     ObjectExpression: 1,    // 强制对象中的属性的缩进
-        //     ImportDeclaration: 1,   // 强制 import 语句的缩进
-        //     flatTernaryExpressions: false,  // 要求三元表达式内的三元表达式有缩进
-        //     ignoreComments: false,  // 注释需要与前一行或下一行的注释对齐
-        // }],
-
         // 对象字面量的键和值之间使用一致的空格
         'key-spacing': ['error', {
             beforeColon: false, // 禁止在对象字面量的键和冒号之间存在空格
@@ -92,9 +65,6 @@ module.exports = {
 
         // 要求尽可能地使用单引号，允许字符串使用单引号或双引号，只要字符串中包含了一个其它引号，否则需要转义
         quotes: ['error', 'single', { avoidEscape: true }],
-
-        // 要求在语句末尾使用分号
-        semi: ['error', 'always'],
 
         // 强制分号前后的空格
         'semi-spacing': ['error', { before: false, after: true }],
@@ -119,7 +89,7 @@ module.exports = {
          * error
          */
 
-        // 强制“for” 循环中更新子句的计数器朝着正确的方向移动 
+        // 强制“for” 循环中更新子句的计数器朝着正确的方向移动
         // https://eslint.org/docs/rules/for-direction
         'for-direction': 'error',
 
@@ -127,7 +97,7 @@ module.exports = {
         // https://eslint.org/docs/rules/getter-return
         'getter-return': ['error', { allowImplicit: true }],
 
-        // 禁止在循环中出现 await 
+        // 禁止在循环中出现 await
         // https://eslint.org/docs/rules/no-await-in-loop
         'no-await-in-loop': 'error',
 
@@ -147,7 +117,7 @@ module.exports = {
         // 禁止在 function 定义中出现重复的参数
         'no-dupe-args': 'error',
 
-        // 禁止在对象字面量中出现重复的键 
+        // 禁止在对象字面量中出现重复的键
         'no-dupe-keys': 'error',
 
         // 禁止重复 case 标签
@@ -198,7 +168,7 @@ module.exports = {
         // https://eslint.org/docs/rules/no-template-curly-in-string
         'no-template-curly-in-string': 'error',
 
-        // 禁止使用令人困惑的多行表达式 
+        // 禁止使用令人困惑的多行表达式
         // https://eslint.org/docs/rules/no-unexpected-multiline
         'no-unexpected-multiline': 'error',
 
@@ -254,12 +224,10 @@ module.exports = {
          */
 
         // 禁止在定义变量之前就使用了变量
-        'no-use-before-define': ['error', { functions: true, classes: true, variables: true }],
+        'no-use-before-define': ['error', { functions: false, classes: true, variables: false }],
 
         // 警告变量声明与外层作用域的变量同名
-        'no-shadow': 'warn',
-
-        'no-var': ['error'],
+        // 'no-shadow': 'warn',
 
         /**
          * practices
@@ -282,17 +250,14 @@ module.exports = {
         // 禁止数字字面量中使用前导和末尾小数点
         'no-floating-decimal': 'error',
 
-        // 禁止不必要的函数绑定
-        'no-extra-bind': 'error',
-
         // for-in 需要进行 hasOwnProperty 判断
         'guard-for-in': 'error',
 
         // 禁止多行字符串
         'no-multi-str': 'error',
 
-        // IIFE 强制总是包裹 function 表达式
-        'wrap-iife': ['error', 'outside', { functionPrototypeMethods: false }],
+        // IIFE 强制总是包裹 function 表达式,暂时没必要开启
+        // 'wrap-iife': ['error', 'outside', { functionPrototypeMethods: false }],
 
         // 禁止出现多个空格
         'no-multi-spaces': ['error', {
@@ -313,30 +278,23 @@ module.exports = {
         // 尽可能使用简写属性
         "object-shorthand": ["error", "always", { "avoidQuotes": true }],
 
-        // 推荐使用解构
-        "prefer-destructuring": ["warn", {
-            "array": true,
-            "object": true
-        }, 
-        {
-            "enforceForRenamedProperties": false
-        }],
-
-        // 强制使用模板字符串  
-        "prefer-template": ['error'],
-
         // 剩余参数代替arguments
         "prefer-rest-params": ['error'],
 
         // 非this改变下禁用apply,使用rest代替
         "prefer-spread": ['error'],
 
-        // 链式调用适当换行
-        "newline-per-chained-call": ['warn'],
-        
         // 禁止扩展运算符前有单引号
         "rest-spread-spacing": ["error", "never"],
 
+        // 禁止使用var
+        "no-var": ['error'],
+
+        // 优先使用结构
+        "prefer-destructuring": ['error'],
+
+        // 优先使用模版字符串
+        "prefer-template": ['error']
     },
-    "plugins": ["prettier",'@typescript-eslint'],
+    "plugins": ['@typescript-eslint','jest'],
 }

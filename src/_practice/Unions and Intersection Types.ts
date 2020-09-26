@@ -5,66 +5,63 @@
  * If 'padding' is a number, then that number of spaces is added to the left side.
  */
 function padLeft(value: string, padding: string | number) {
-    // ...
+  // ...
 }
 
-const indentedString = padLeft('Hello world', true);
+const indentedString = padLeft('Hello world', true)
 
 // 类型别名
 type NetworkLoadingState = {
-    state: 'loading';
-};
+  state: 'loading'
+}
 
 type NetworkFailedState = {
-    state: 'failed';
-    code: number;
-};
+  state: 'failed'
+  code: number
+}
 
 type NetworkSuccessState = {
-    state: 'success';
-    response: {
-        title: string;
-        duration: number;
-        summary: string;
-    };
-};
+  state: 'success'
+  response: {
+    title: string
+    duration: number
+    summary: string
+  }
+}
 
 // Create a type which represents only one of the above types
 // but you aren't sure which it is yet.
-type NetworkState =
-    | NetworkLoadingState
-    | NetworkFailedState
-    | NetworkSuccessState;
+type NetworkState = NetworkLoadingState | NetworkFailedState | NetworkSuccessState
 const state: NetworkState = {
-    state: 'failed',
-    code: 0,
-};
+  state: 'failed',
+  code: 0,
+}
 
 // 交叉类型，用于minix情况
 interface ErrorHandling {
-    success: boolean;
-    error?: { message: string };
+  success: boolean
+  error?: { message: string }
 }
 
 interface ArtworksData {
-    artworks: { title: string }[];
+  artworks: { title: string }[]
 }
 
 interface ArtistsData {
-    artists: { name: string }[];
+  artists: { name: string }[]
 }
 
 // These interfaces are composed to have
 // consistent error handling, and their own data.
 
-type ArtworksResponse = ArtworksData & ErrorHandling;
-type ArtistsResponse = ArtistsData & ErrorHandling;
+type ArtworksResponse = ArtworksData & ErrorHandling
+type ArtistsResponse = ArtistsData & ErrorHandling
 
 const handleArtistsResponse = (response: ArtistsResponse) => {
-    if (response.error) {
-        console.error(response.error.message);
-        return;
-    }
+  if (response.error) {
+    console.error(response.error.message)
+    return
+  }
 
-    console.log(response.artists);
-};
+  console.log(response.artists)
+}
