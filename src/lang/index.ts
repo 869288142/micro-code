@@ -55,3 +55,7 @@ export const camelize = cacheStringFunction((str: string): string => {
 export const capitalize = cacheStringFunction((str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1)
 })
+
+function test (a: string, b: string, c: string, d: string,) : string {
+  return a + b + c + d
+}

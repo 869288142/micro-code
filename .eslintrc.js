@@ -294,7 +294,7 @@ module.exports = {
         "prefer-destructuring": ['error'],
 
         // 优先使用模版字符串
-        "prefer-template": ['error']
+        "prefer-template": ['error'],
     },
     "plugins": ['@typescript-eslint','jest'],
 }
