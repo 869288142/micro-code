@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosAdapter, AxiosResponse } from 'axios';
 import { requestInterceptors, responseInterceptors } from '../Interceptor';
 import { transformRequest, transformResponse } from '../transform';
 import type { RequestInterceptor, RequestAdapter, ResponseInterceptor, RequestConfig } from '../interface/Request'
@@ -111,7 +111,7 @@ class jzRequest {
      * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    request(config: RequestConfig) {
+    request(config: RequestConfig) : Promise<AxiosResponse> {
         const { isShowWholeResponse = false } = config;
         return this.#api.request(config).then((response) => {
             return isShowWholeResponse
@@ -127,7 +127,7 @@ class jzRequest {
      * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    delete(url: string, config = {}) {
+    delete(url: string, config = {}): Promise<AxiosResponse> {
         return this.request({
             method: 'delete',
             url,
@@ -142,7 +142,7 @@ class jzRequest {
      * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    get(url: string, config = {}) {
+    get(url: string, config = {}): Promise<AxiosResponse> {
         return this.request({
             method: 'get',
             url,
@@ -157,7 +157,7 @@ class jzRequest {
      * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    head(url: string, config = {}) {
+    head(url: string, config = {}): Promise<AxiosResponse> {
         return this.request({
             ...config,
             url,
@@ -171,7 +171,7 @@ class jzRequest {
      * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    options(url: string, config = {}) {
+    options(url: string, config = {}): Promise<AxiosResponse> {
         return this.request({
             method: 'options',
             url,
@@ -186,7 +186,7 @@ class jzRequest {
      * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    post(url: string, config = {}) {
+    post(url: string, config = {}): Promise<AxiosResponse> {
         return this.request({
             method: 'post',
             url,
@@ -202,7 +202,7 @@ class jzRequest {
      * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    put(url: string, config = {}) {
+    put(url: string, config = {}) : Promise<AxiosResponse> {
         return this.request({
             method: 'put',
             url,
@@ -218,7 +218,7 @@ class jzRequest {
      * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    patch(url: string, config = {}) {
+    patch(url: string, config = {}) : Promise<AxiosResponse> {
         return this.request({
             method: 'patch',
             url,
