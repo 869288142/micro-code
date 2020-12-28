@@ -5,7 +5,7 @@
       "sourceMap": true,
       "esModuleInterop":true,
       "declaration": true,
-      "declarationMap":true,
+      "declarationDir": "./lib",
       "moduleResolution":"node",
       "strictNullChecks":true,
       "noImplicitAny":true, // 禁用隐式any
