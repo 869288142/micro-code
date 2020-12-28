@@ -24,7 +24,7 @@ const plugins =
       include: 'node_modules/**'
     }),
     json(),
-    dts()
+    // dts()
   ]
 // eslint-disable-next-line no-undef
 if (process.env.NODE_ENV === 'production') {
@@ -39,14 +39,10 @@ export default {
     input: 'src/jzRequest/index.ts',
     output: [
         {
+          name: 'jzRequest',
           file: 'lib/a.js',
-          format: 'es',
+          format: 'umd',
           sourcemap: true,
-        },
-        {
-          input: './src/jzRequest/index.ts',
-          output: [{ file: 'lib/a.d.ts', format: 'es' }],
-          plugins: [dts()],
         },
     ],
     plugins

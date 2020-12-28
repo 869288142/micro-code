@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-      "target": "es2020",
+      "target": "ESNext",
+      "module": "ESNext",
       "importHelpers": true,
       "sourceMap": true,
       "esModuleInterop":true,

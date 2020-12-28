@@ -1,8 +1,9 @@
-import axios, { AxiosAdapter, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { requestInterceptors, responseInterceptors } from '../Interceptor';
 import { transformRequest, transformResponse } from '../transform';
 import type { RequestInterceptor, RequestAdapter, ResponseInterceptor, RequestConfig } from '../interface/Request'
 import { isArray } from '../utils'
+
 /**
  *
  * 请求封装类
@@ -107,8 +108,6 @@ class jzRequest {
     /**
      * request
      * @async
-     * @param {AxiosRequestConfig} [config={}] 请求配置
-     * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
     request(config: RequestConfig) : Promise<AxiosResponse> {
@@ -122,12 +121,9 @@ class jzRequest {
     /**
      * delete
      * @async
-     * @param {String} url url
-     * @param {AxiosRequestConfig} [config={}] 请求配置
-     * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    delete(url: string, config = {}): Promise<AxiosResponse> {
+    delete(url: string, config: RequestConfig = {}): Promise<AxiosResponse> {
         return this.request({
             method: 'delete',
             url,
@@ -137,12 +133,9 @@ class jzRequest {
     /**
      * get
      * @async
-     * @param {String} url url
-     * @param {AxiosRequestConfig} [config={}] 请求配置
-     * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    get(url: string, config = {}): Promise<AxiosResponse> {
+    get(url: string, config: RequestConfig = {}): Promise<AxiosResponse> {
         return this.request({
             method: 'get',
             url,
@@ -152,12 +145,9 @@ class jzRequest {
     /**
      * head
      * @async
-     * @param {String} url url
-     * @param {AxiosRequestConfig} [config={}] 请求配置
-     * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    head(url: string, config = {}): Promise<AxiosResponse> {
+    head(url: string, config: RequestConfig = {}): Promise<AxiosResponse> {
         return this.request({
             ...config,
             url,
@@ -166,12 +156,9 @@ class jzRequest {
     /**
      * options
      * @async
-     * @param {String} url url
-     * @param {AxiosRequestConfig} [config={}] 请求配置
-     * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    options(url: string, config = {}): Promise<AxiosResponse> {
+    options(url: string, config: RequestConfig = {}): Promise<AxiosResponse> {
         return this.request({
             method: 'options',
             url,
@@ -181,12 +168,9 @@ class jzRequest {
     /**
      * post
      * @async
-     * @param {String} url url
-     * @param {AxiosRequestConfig} [config={}] 请求配置
-     * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    post(url: string, config = {}): Promise<AxiosResponse> {
+    post(url: string, config: RequestConfig = {}): Promise<AxiosResponse> {
         return this.request({
             method: 'post',
             url,
@@ -197,12 +181,9 @@ class jzRequest {
      *
      * put
      * @async
-     * @param {String} url url
-     * @param {AxiosRequestConfig} [config={}] 请求配置
-     * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    put(url: string, config = {}) : Promise<AxiosResponse> {
+    put(url: string, config: RequestConfig = {}) : Promise<AxiosResponse> {
         return this.request({
             method: 'put',
             url,
@@ -213,12 +194,9 @@ class jzRequest {
      *
      * patch请求
      * @async
-     * @param {String} url url
-     * @param {AxiosRequestConfig} [config={}] 请求配置
-     * @return {Promise<AxiosResponse>} 返回结果
      * @memberof jzRequest
      */
-    patch(url: string, config = {}) : Promise<AxiosResponse> {
+    patch(url: string, config: RequestConfig = {}) : Promise<AxiosResponse> {
         return this.request({
             method: 'patch',
             url,
@@ -227,7 +205,6 @@ class jzRequest {
     }
     /**
      *  获取取消token和cancel函数
-     * @return {CancelTokenStatic} 取消token和cancel函数
      * @memberof jzRequest
      */
     getCancelToken(): any {
@@ -244,7 +221,7 @@ class jzRequest {
      * @memberof jzRequest
      */
     isCancel(val: any): boolean | undefined {
-        return this.#api.isCancel && this.#api.isCancel(val);
+        return this.#api.isCancel(val);
     }
     create() {
       return create()
@@ -256,8 +233,9 @@ class jzRequest {
  * @instance
  * @return { jzRequest} jzRequest实例
  */
+
 function create(): jzRequest {
-    const axiosInstance: RequestAdapter = axios.create({});
+    const axiosInstance = axios.create({}) as RequestAdapter;
 
     axiosInstance.CancelToken = axios.CancelToken;
 

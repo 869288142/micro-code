@@ -14,9 +14,9 @@ type RequestInterceptor = AxiosInterceptorUse<AxiosRequestConfig>
 type ResponseInterceptor = AxiosInterceptorUse<AxiosResponse>
 
 interface RequestAdapter extends AxiosInstance {
-  Cancel?: CancelStatic
-  CancelToken?: CancelTokenStatic
-  isCancel?(value: any): boolean
+  Cancel: CancelStatic
+  CancelToken: CancelTokenStatic
+  isCancel(value: any): boolean
 }
 export {
   RequestConfig,
