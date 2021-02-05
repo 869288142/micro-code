@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "记录一些常见的polyfill\r map 原生实现",
   "main": "./lib/a.js",
-  "types": "lib/jzRequest/index.d.ts",
+  "types": "./src/jzRequest",
   "scripts": {
-    "test": "jest --bail ",
+    "test": "jest --bail --coverage",
     "dev": " rimraf lib && cross-env NODE_ENV=development rollup -c -w",
     "build": " rimraf lib && cross-env NODE_ENV=production rollup -c",
     "lint:fix": "eslint ./src --fix",
@@ -77,9 +77,4 @@
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "eslint --fix"
-    ]
-  }
 }

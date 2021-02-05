@@ -1,4 +1,6 @@
-import { max } from '../max'
+function max(arr: any): any {
+  return Math.max(...arr)
+}
 
 describe('array/max', () => {
   const orign = [1, 3, 1]
