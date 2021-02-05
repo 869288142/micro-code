@@ -7,11 +7,12 @@ import serve from 'rollup-plugin-serve';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
-import dts from 'rollup-plugin-dts';
 const plugins =
   [
     del({ targets: 'lib/*' }),
-    typescript({}),
+    typescript({
+      useTsconfigDeclarationDir: true
+    }),
     babel({
       babelHelpers: 'runtime',
       exclude: 'node_modules/**'

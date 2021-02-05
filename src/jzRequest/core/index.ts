@@ -16,16 +16,16 @@ class jzRequest {
      * @constructor
      * @memberof jzRequest
      */
-    #api : RequestAdapter
+    api : RequestAdapter
     constructor(api : RequestAdapter) {
         /** @access private */
-        this.#api = api;
+        this.api = api;
 
-        this.initRequestInterceptor(this.#api);
-        this.initResponseInterceptor(this.#api);
+        this.initRequestInterceptor(this.api);
+        this.initResponseInterceptor(this.api);
 
-        this.initTransformRequest(this.#api);
-        this.initTransformResponse(this.#api);
+        this.initTransformRequest(this.api);
+        this.initTransformResponse(this.api);
     }
     /**
      *
@@ -56,7 +56,7 @@ class jzRequest {
      * @memberof jzRequest
      */
     addRequestInterceptor({ onFulfilled, onRejected } : RequestInterceptor) : number {
-        return this.#api.interceptors.request.use(onFulfilled, onRejected);
+        return this.api.interceptors.request.use(onFulfilled, onRejected);
     }
     /**
      * 添加响应拦截器并返回此拦截器id
@@ -65,7 +65,7 @@ class jzRequest {
      * @memberof jzRequest
      */
     addResponseInterceptor({ onFulfilled, onRejected } : ResponseInterceptor): number {
-        return this.#api.interceptors.response.use(onFulfilled, onRejected);
+        return this.api.interceptors.response.use(onFulfilled, onRejected);
     }
     /**
      *  删除指定请求拦截器
@@ -73,7 +73,7 @@ class jzRequest {
      * @memberof jzRequest
      */
     clearRequestInterceptor(id : number): void {
-        this.#api.interceptors.request.eject(id);
+        this.api.interceptors.request.eject(id);
     }
     /**
      *  删除指定响应拦截器
@@ -81,7 +81,7 @@ class jzRequest {
      * @memberof jzRequest
      */
     clearResponseInterceptor(id : number): void {
-        this.#api.interceptors.response.eject(id);
+        this.api.interceptors.response.eject(id);
     }
     /**
      *
@@ -112,7 +112,7 @@ class jzRequest {
      */
     request(config: RequestConfig) : Promise<AxiosResponse> {
         const { isShowWholeResponse = false } = config;
-        return this.#api.request(config).then((response) => {
+        return this.api.request(config).then((response) => {
             return isShowWholeResponse
                 ? Promise.resolve(response)
                 : Promise.resolve(response.data);
@@ -208,7 +208,7 @@ class jzRequest {
      * @memberof jzRequest
      */
     getCancelToken(): any {
-        const {CancelToken} = this.#api;
+        const {CancelToken} = this.api;
         if (CancelToken) {
           const source = CancelToken.source();
           return source;
@@ -221,7 +221,7 @@ class jzRequest {
      * @memberof jzRequest
      */
     isCancel(val: any): boolean | undefined {
-        return this.#api.isCancel(val);
+        return this.api.isCancel(val);
     }
     create() {
       return create()

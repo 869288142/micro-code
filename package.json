@@ -10,7 +10,8 @@
     "build": " rimraf lib && cross-env NODE_ENV=production rollup -c",
     "lint:fix": "eslint ./src --fix",
     "doc": "typedoc --out doc src",
-    "changeLog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "changeLog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "gen-dts": "api-extractor run --local --verbose"
   },
   "repository": {
     "type": "git",
@@ -58,23 +59,18 @@
   },
   "dependencies": {
     "@babel/runtime-corejs2": "^7.11.2",
+    "@microsoft/api-extractor": "^7.13.0",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
     "@types/lodash": "^4.14.159",
     "axios": "^0.21.1",
     "lodash": "^4.17.20",
-    "rollup-plugin-dts": "^2.0.1",
     "rollup-plugin-serve": "^1.1.0"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  }
 }
