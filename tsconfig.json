@@ -9,12 +9,22 @@
       "declarationMap": true,
       "declarationDir": "./lib/types",
       "moduleResolution":"node",
+
       "strictNullChecks":true,
       "noImplicitAny":true, // 禁用隐式any
       "noImplicitThis":true,// 禁用隐式this
-      "noUnusedLocals":true, // 未使用的局部变量
-      "noUnusedParameters":true,  // 未使用的参数
+      "noUnusedLocals":true,
+      "noUnusedParameters":true,
       "strict":true,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitOverride": true,
+      "noImplicitReturns": true,
+      "strictBindCallApply": true,
+      "strictPropertyInitialization": true,
+      "useUnknownInCatchVariables": true,
+      "noUncheckedIndexedAccess":true,
       "lib": [
         "esnext",
         "dom",
